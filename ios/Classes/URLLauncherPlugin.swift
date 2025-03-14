@@ -33,7 +33,7 @@ public final class URLLauncherPlugin: NSObject, FlutterPlugin, UrlLauncherApi {
     return canOpen ? .success : .failure
   }
 
-  func launchUrl(
+    @MainActor func launchUrl(
     url: String,
     universalLinksOnly: Bool,
     completion: @escaping (Result<LaunchResult, Error>) -> Void

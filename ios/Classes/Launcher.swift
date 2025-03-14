@@ -10,10 +10,12 @@ protocol Launcher {
   func canOpenURL(_ url: URL) -> Bool
 
   /// Attempts to asynchronously open the resource at the specified URL.
-  func open(
-    _ url: URL,
-    options: [UIApplication.OpenExternalURLOptionsKey: Any],
-    completionHandler completion: ((Bool) -> Void)?)
+    @MainActor
+    func open(
+        _ url: URL,
+        options: [UIApplication.OpenExternalURLOptionsKey: Any],
+        completionHandler completion: (@MainActor @Sendable (Bool) -> Void)?
+            )
 }
 
 /// Launcher is intentionally a direct passthroguh to UIApplication.
